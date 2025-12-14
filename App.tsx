@@ -194,13 +194,25 @@ const ChristmasLetter = () => {
 
 const ElfCard = ({ name, role, delay }: { name: string, role: string, delay: string }) => {
   return (
-    <div className="flex flex-col group animate-fade-in-up items-center p-8 bg-white rounded-xl border-2 border-transparent hover:border-christmas-green/30 shadow-sm hover:shadow-xl transition-all duration-300 w-full max-w-xs relative overflow-hidden" style={{ animationDelay: delay }}>
-      <div className="w-16 h-16 rounded-full bg-christmas-cream mb-4 flex items-center justify-center border-2 border-christmas-gold shadow-inner group-hover:scale-110 transition-transform">
-        <Gift size={24} className="text-christmas-red" />
+    <div 
+      className="flex flex-col group animate-fade-in-up items-center p-8 bg-white rounded-xl border-2 border-transparent hover:border-christmas-green/50 shadow-sm hover:shadow-2xl transition-all duration-500 w-full max-w-xs relative overflow-hidden hover:-translate-y-2" 
+      style={{ animationDelay: delay }}
+    >
+      {/* Background Hover Effect */}
+      <div className="absolute inset-0 bg-gradient-to-br from-christmas-green/5 to-christmas-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+      <div className="absolute -right-8 -top-8 text-christmas-green/5 group-hover:text-christmas-green/10 transition-colors duration-500 transform group-hover:rotate-12">
+         <Snowflake size={100} />
       </div>
-      <h3 className="font-serif text-xl text-christmas-dark text-center mb-1 font-bold">{name}</h3>
-      <div className="h-0.5 w-10 bg-christmas-gold mb-3"></div>
-      <p className="text-sm text-stone-500 font-medium uppercase tracking-wider text-center">{role}</p>
+
+      <div className="relative z-10 w-20 h-20 rounded-full bg-christmas-cream mb-4 flex items-center justify-center border-4 border-christmas-gold/30 shadow-inner group-hover:scale-110 group-hover:border-christmas-gold group-hover:rotate-6 transition-all duration-500">
+        <Gift size={32} className="text-christmas-red group-hover:text-christmas-green transition-colors duration-500 drop-shadow-sm" />
+      </div>
+      
+      <h3 className="relative z-10 font-serif text-2xl text-christmas-dark text-center mb-2 font-bold group-hover:text-christmas-red transition-colors duration-300">{name}</h3>
+      
+      <div className="relative z-10 h-1 w-12 bg-christmas-gold/50 mb-4 rounded-full group-hover:w-24 group-hover:bg-christmas-gold transition-all duration-500"></div>
+      
+      <p className="relative z-10 text-sm text-stone-500 font-medium uppercase tracking-widest text-center group-hover:text-christmas-dark transition-colors duration-300">{role}</p>
     </div>
   );
 };
@@ -340,8 +352,12 @@ const App: React.FC = () => {
 
       <main>
         {/* Story Introduction */}
-        <section id="story" className="py-24 bg-white relative transition-colors duration-500">
-           <div className="absolute inset-0 snow-bg pointer-events-none"></div>
+        <section id="story" className="py-24 bg-white relative transition-colors duration-500 overflow-hidden">
+           {currentTheme === 'winter' ? (
+              <div className="absolute inset-0 bg-winter-snow pointer-events-none z-0"></div>
+           ) : (
+              <div className="absolute inset-0 bg-shimmer-gold pointer-events-none z-0"></div>
+           )}
           <div className="container mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-12 gap-12 items-start relative z-10">
             <div className="md:col-span-4">
               <div className="inline-block mb-3 text-xs font-bold tracking-widest text-christmas-red uppercase flex items-center gap-2 transition-colors duration-500">

@@ -1,4 +1,3 @@
-
 /**
  * @license
  * SPDX-License-Identifier: Apache-2.0
@@ -8,6 +7,37 @@ import React, { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Float, MeshDistortMaterial, Sphere, Torus, Cylinder, Box, Stars, Environment, Sparkles } from '@react-three/drei';
 import * as THREE from 'three';
+
+// Manually define intrinsic elements to satisfy TypeScript in environments where 
+// R3F types are not automatically picked up or are clashing.
+// Augmenting both global JSX and React's internal JSX namespace to ensure compatibility across TS versions.
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      group: any;
+      mesh: any;
+      meshStandardMaterial: any;
+      ambientLight: any;
+      pointLight: any;
+      spotLight: any;
+      coneGeometry: any;
+    }
+  }
+}
+
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      group: any;
+      mesh: any;
+      meshStandardMaterial: any;
+      ambientLight: any;
+      pointLight: any;
+      spotLight: any;
+      coneGeometry: any;
+    }
+  }
+}
 
 interface SceneColors {
     red: string;
