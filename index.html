@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SantaQubit：量子聖誕奇蹟</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              serif: ['"Playfair Display"', 'serif'],
+              sans: ['"Inter"', 'sans-serif'],
+            },
+            colors: {
+              christmas: {
+                red: 'var(--color-christmas-red)',
+                green: 'var(--color-christmas-green)',
+                gold: 'var(--color-christmas-gold)',
+                cream: 'var(--color-christmas-cream)',
+                dark: 'var(--color-christmas-dark)',
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      :root {
+        /* Default Classic Theme */
+        --color-christmas-red: #C41E3A;
+        --color-christmas-green: #165B33;
+        --color-christmas-gold: #D4AF37;
+        --color-christmas-cream: #F8F5E6;
+        --color-christmas-dark: #0F2F24;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 100px;
+      }
+      body {
+        background-color: var(--color-christmas-cream);
+        color: var(--color-christmas-dark);
+        transition: background-color 0.5s ease, color 0.5s ease;
+      }
+      @media print {
+        nav, footer, button {
+          display: none !important;
+        }
+      }
+      
+      /* Falling Snow Animation */
+      .snowflake {
+        position: fixed;
+        top: -10px;
+        color: #FFF;
+        font-size: 1em;
+        font-family: Arial, sans-serif;
+        text-shadow: 0 0 5px #000;
+        z-index: 9999;
+        pointer-events: none;
+        animation-name: fall;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+      }
+
+      @keyframes fall {
+        0% { transform: translateY(-10vh) translateX(0); opacity: 1; }
+        100% { transform: translateY(110vh) translateX(20px); opacity: 0.3; }
+      }
+
+      /* Candy Cane Stripe Pattern */
+      .candy-stripe {
+        background: repeating-linear-gradient(
+          45deg,
+          var(--color-christmas-red),
+          var(--color-christmas-red) 20px,
+          var(--color-christmas-cream) 20px,
+          var(--color-christmas-cream) 40px
+        );
+        transition: background 0.5s ease;
+      }
+      
+      .candy-stripe-green {
+        background: repeating-linear-gradient(
+          45deg,
+          var(--color-christmas-green),
+          var(--color-christmas-green) 20px,
+          var(--color-christmas-gold) 20px,
+          var(--color-christmas-gold) 40px
+        );
+        transition: background 0.5s ease;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "@react-three/fiber": "https://aistudiocdn.com/@react-three/fiber@^9.4.0",
+    "@react-three/drei": "https://aistudiocdn.com/@react-three/drei@^10.7.7",
+    "three": "https://aistudiocdn.com/three@^0.181.1",
+    "framer-motion": "https://aistudiocdn.com/framer-motion@^12.23.24",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.553.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
